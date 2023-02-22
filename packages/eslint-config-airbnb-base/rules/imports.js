@@ -253,11 +253,31 @@ module.exports = {
 
     // Reports modules without any exports, or with unused exports
     // https://github.com/benmosher/eslint-plugin-import/blob/f63dd261809de6883b13b6b5b960e6d7f42a7813/docs/rules/no-unused-modules.md
-    // TODO: enable, semver-major
+    // TODO: enable once it supports CJS
     'import/no-unused-modules': ['off', {
       ignoreExports: [],
       missingExports: true,
       unusedExports: true,
     }],
+
+    // Reports the use of import declarations with CommonJS exports in any module except for the main module.
+    // https://github.com/benmosher/eslint-plugin-import/blob/1012eb951767279ce3b540a4ec4f29236104bb5b/docs/rules/no-import-module-exports.md
+    'import/no-import-module-exports': ['error', {
+      exceptions: [],
+    }],
+
+    // Use this rule to prevent importing packages through relative paths.
+    // https://github.com/benmosher/eslint-plugin-import/blob/1012eb951767279ce3b540a4ec4f29236104bb5b/docs/rules/no-relative-packages.md
+    'import/no-relative-packages': 'error',
+
+    // enforce a consistent style for type specifiers (inline or top-level)
+    // https://github.com/import-js/eslint-plugin-import/blob/d5fc8b670dc8e6903dbb7b0894452f60c03089f5/docs/rules/consistent-type-specifier-style.md
+    // TODO, semver-major: enable (just in case)
+    'import/consistent-type-specifier-style': ['off', 'prefer-inline'],
+
+    // Reports the use of empty named import blocks.
+    // https://github.com/import-js/eslint-plugin-import/blob/d5fc8b670dc8e6903dbb7b0894452f60c03089f5/docs/rules/no-empty-named-blocks.md
+    // TODO, semver-minor: enable
+    'import/no-empty-named-blocks': 'off',
   },
 };
